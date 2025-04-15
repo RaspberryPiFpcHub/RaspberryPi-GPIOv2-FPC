@@ -24,9 +24,9 @@ var
 
 begin
   gpio := GpioOpenLineOutput(p11);           // Open pin 11 as output (default push-pull)
-  gpio.SetValue(1);                           // Set high
-  gpio.SetValue(0);                           // Set low
-  gpio.Close;                                 // Always close when done
+  gpioSetBit(p11);                           // Set high
+  gpioClearBit(p11);                         // Set low
+  GpioCloseAllLines; ;                       // Always close when everything is done
 end.
 ```
 
@@ -41,12 +41,12 @@ var
 
 begin
   gpio := GpioOpenLineInput(p11, pullup);     // Open pin 11 as input with pull-up resistor
-  if gpio.GetValue = 1 then
+  if gpioGetBit  then
     writeln('High')
   else
     writeln('Low');
-  gpio.Close;
-end.
+  gpioCloseAllLines; // only if you don't use any GpioFunctions anymore
+ end.
 ```
 
 ## Available Flags
@@ -72,13 +72,13 @@ const
 
 ```pascal
 // Output with pull-down and active-low
-gpio := GpioOpenLineOutput(p13, pullDown or aktivLow);
+ GpioOpenLineOutput(p13, pullDown or aktivLow);
 
 // Input with no pull resistor
-gpio := GpioOpenLineInput(p15, pullnone);
+ GpioOpenLineInput(p15, pullnone);
 
 // Push-pull output (explicit)
-gpio := GpioOpenLineOutput(p17, opennone);
+ GpioOpenLineOutput(p17, opennone);
 ```
 
 ## Pin Identification
