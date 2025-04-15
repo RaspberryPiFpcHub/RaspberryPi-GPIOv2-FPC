@@ -90,6 +90,11 @@ GPIO lines can be opened by:
 
 The predefined pin constants (like `p11`) correspond to the physical header pins on the Raspberry Pi and are mapped internally to the correct GPIO number.
 
+## Requirements
+
+- You must either run your program as **root**, or your user must be a member of the **gpio** group (or start the program using `sudo`).
+- Free Pascal Compiler (FPC)
+
 ## Use Cases
 
 This library is ideal for:
