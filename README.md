@@ -41,7 +41,7 @@ var
 
 begin
   gpio := GpioOpenLineInput(p11, pullup);     // Open pin 11 as input with pull-up resistor
-  if gpioGetBit  then
+  if gpioGetBit(p11)  then
     writeln('High')
   else
     writeln('Low');
